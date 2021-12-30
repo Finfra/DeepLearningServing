@@ -25,10 +25,10 @@ dpkg --configure -a
 echo "Y"|apt install -y /tmp/cuda-11-2_11.2.2-1_amd64.deb
 # echo "***************Updating***************"
 # apt update -y
-# echo "***************Downloading machine learning repo***************"
-# wget http://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64/nvidia-machine-learning-repo-ubuntu1804_1.0.0-1_amd64.deb -O /tmp/nvidia-machine-learning-repo-ubuntu1804_1.0.0-1_amd64.deb
-# echo "***************Installing machine learning repo***************"
-# apt install -y /tmp/nvidia-machine-learning-repo-ubuntu1804_1.0.0-1_amd64.deb
+echo "***************Downloading machine learning repo***************"
+wget http://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64/nvidia-machine-learning-repo-ubuntu1804_1.0.0-1_amd64.deb -O /tmp/nvidia-machine-learning-repo-ubuntu1804_1.0.0-1_amd64.deb
+echo "***************Installing machine learning repo***************"
+apt install -y /tmp/nvidia-machine-learning-repo-ubuntu1804_1.0.0-1_amd64.deb
 
 echo "***************Installing Nvidia Driver***************"
 sudo apt install -y nvidia-driver-495
