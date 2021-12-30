@@ -30,7 +30,7 @@ echo "***************Installing machine learning repo***************"
 apt install -y /tmp/nvidia-machine-learning-repo-ubuntu1804_1.0.0-1_amd64.deb
 
 echo "***************Installing Nvidia Driver***************"
-sudo apt install nvidia-driver-460
+sudo apt install -y nvidia-driver-460
 
 apt-get install -y --no-install-recommends \
     cuda-10-1 \
@@ -56,7 +56,7 @@ ldconfig
 
 
 
-
+pip3.7 install --user tensorflow-gpu==2.7.0
 
 
 
