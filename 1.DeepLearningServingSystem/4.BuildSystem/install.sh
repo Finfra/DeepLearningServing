@@ -79,4 +79,4 @@ pip3.7 install opencv-python
 
 #
 # cd $pwd
-. installTensorflow1.sh
+. installTensorflow.sh

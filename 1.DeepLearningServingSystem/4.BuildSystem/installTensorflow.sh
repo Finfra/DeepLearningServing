@@ -34,16 +34,16 @@ echo "***************Installing Nvidia Driver***************"
 sudo apt install -y nvidia-driver-495
 
 apt-get install -y --no-install-recommends \
-    cuda-11-1 \
-    libcudnn8=8.3.1.22-1+cuda11.5  \
-    libcudnn8-dev=8.3.1.22-1+cuda11.5
+    cuda-11-2 \
+    libcudnn8  \
+    libcudnn8-dev
 
 echo "--------------------------------------------------------------------------------"
 
 # Setup CUDA paths
 echo "***************Setting CUDA paths***************"
-echo 'export PATH=/usr/local/cuda-11.2/bin:$PATH' >> /etc/bash.bashrc
-echo 'export LD_LIBRARY_PATH=/usr/local/cuda-11.2/lib64:$LD_LIBRARY_PATH' >> /etc/bash.bashrc
+[ ! $(cat /etc/bash.bashrc|grep /usr/local/cuda-11.2/bin)   ]&& echo 'export PATH=/usr/local/cuda-11.2/bin:$PATH' >> /etc/bash.bashrc
+[ ! $(cat /etc/bash.bashrc|grep /usr/local/cuda-11.2/lib64) ]&& echo 'export LD_LIBRARY_PATH=/usr/local/cuda-11.2/lib64:$LD_LIBRARY_PATH' >> /etc/bash.bashrc
 source /etc/bash.bashrc
 
 echo "***************Running ldconfig***************"
@@ -57,6 +57,16 @@ echo "--------------------------------------------------------------------------
 pip3.7 install --user tensorflow-gpu==2.7.0
 
 
+echo "--------------------------------------------------------------------------------"
+echo "# Tensorflow Gpu Test------------------------------------------------------------"
+echo "--------------------------------------------------------------------------------"
+nvidia-smi
+echo "--------------------------------------------------------------------------------"
+
+echo "from tensorflow.python.client import device_lib
+device_lib.list_local_devices()"|python3.7
+
+echo "--------------------------------------------------------------------------------"
 
 #
 # OLD method
