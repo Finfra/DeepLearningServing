@@ -32,13 +32,21 @@ sudo apt install -y software-properties-common
 # Install
 ## Python
 sudo apt install -y python3.7
-#-pip python3-dev
-sudo pip3 install virtualenvwrapper
-x=$(cat ~/.bashrc |grep virtualenvwrapper)
-if [ ${#x} -eq 0 ]; then
+curl https://bootstrap.pypa.io/get-pip.py -o /tmp/get-pip.py
+python3.7 /tmp/get-pip.py
+### Python
+ln -s /usr/bin/python3.7 /usr/bin/python
+# ln -s /usr/bin/pip3.7 /usr/bin/pip
+python3.7 -m pip install --upgrade pip
 
-  cat >> ~/.bashrc <<EOF
-VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+
+
+#-pip python3-dev
+pip3.7 install virtualenvwrapper
+x=$(cat /etc/bash.bashrc |grep virtualenvwrapper)
+if [ ${#x} -eq 0 ]; then
+cat >> /etc/bash.bashrc <<EOF
+VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3.7
 export WORKON_HOME=~/.virtualenvs
 . /usr/local/bin/virtualenvwrapper.sh
 EOF
@@ -55,14 +63,11 @@ sudo jupyter-nbextension install rise --py --sys-prefix
 pip3.7 install pandas matplotlib seaborn pillow scipy
 pip3.7 install cython numpy
 pip3.7 install opencv-python
+#
+# pwd=$(pwd)
+#
+#
 
-pwd=$(pwd)
-
-
-### Python
-ln -s /usr/bin/python3.7 /usr/bin/python
-ln -s /usr/bin/pip3.7 /usr/bin/pip
-python3.7 -m pip install --upgrade pip
-
-cd $pwd
-# . installTensorflow.sh
+#
+# cd $pwd
+. installTensorflow1.sh
