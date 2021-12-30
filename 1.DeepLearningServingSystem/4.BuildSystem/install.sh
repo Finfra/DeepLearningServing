@@ -1,10 +1,10 @@
 # Info
 #install by ubuntu-18.04.5-desktop-amd64.iso
 # Manual Job
-# Install Base App
-
+echo "--------------------------------------------------------------------------------"
+echo "# Install Base App--------------------------------------------------------------"
+echo "--------------------------------------------------------------------------------"
 sudo apt install -y ssh
-
 # Basic Install
 sudo apt update -y
 sudo apt upgrade -y
@@ -25,13 +25,20 @@ sudo apt install -y software-properties-common
 
 # PS1="\[\e]0;\u@\h: \w\a\]\[\033[01;31m\]G\[\033[00m\] \[\033[01;34m\]\w \[\033[01;30m\]#\[\033[m\] "
 
-# Info
+echo "--------------------------------------------------------------------------------"
+echo "# Hostname Setting--------------------------------------------------------------------------------"
+echo "--------------------------------------------------------------------------------"
 [ ! $(echo $1) ]&& echo "Usage : . install.sh {hostname}"
-[   $(echo $1) ]&& sudo hostnamectl set-hostname $1
+[   $(echo $1) ]&& hostnamectl set-hostname $1
 
-# Install
-## Python
-sudo apt install -y python3.7
+echo "--------------------------------------------------------------------------------"
+echo "# Python Install--------------------------------------------------------------------------------"
+echo "--------------------------------------------------------------------------------"
+
+apt install -y python3.7
+apt install -y python3-distutils
+
+
 curl https://bootstrap.pypa.io/get-pip.py -o /tmp/get-pip.py
 python3.7 /tmp/get-pip.py
 ### Python
@@ -51,7 +58,9 @@ export WORKON_HOME=~/.virtualenvs
 . /usr/local/bin/virtualenvwrapper.sh
 EOF
 fi
-#### Jupyter
+echo "--------------------------------------------------------------------------------"
+echo "## Jupyter ---------------------------------------------------------------------"
+echo "--------------------------------------------------------------------------------"
 pip3.7 install jupyter
 sudo apt-get remove -y python-pexpect python3-pexpect
 pip3.7  install --upgrade pexpect

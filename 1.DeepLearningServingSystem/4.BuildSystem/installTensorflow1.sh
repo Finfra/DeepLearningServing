@@ -1,6 +1,9 @@
 #!/bin/bash
 
 #################################################################
+echo "--------------------------------------------------------------------------------"
+echo "# Cuda Install -----------------------------------------------------------------"
+echo "--------------------------------------------------------------------------------"
 
 sudo apt -y purge nvidia-\*
 
@@ -8,6 +11,7 @@ sudo apt -y autoremove
 sudo apt -y autoclean
 sudo rm -rf /usr/local/cuda*
 
+echo "--------------------------------------------------------------------------------"
 #   https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#pre-installation-actions
 add-apt-repository ppa:graphics-drivers/ppa -y
 echo "***************Adding CUDA rep Key***************"
@@ -27,7 +31,31 @@ apt install -y /tmp/nvidia-machine-learning-repo-ubuntu1804_1.0.0-1_amd64.deb
 
 echo "***************Installing Nvidia Driver***************"
 sudo apt install nvidia-driver-460
-reboot
+
+apt-get install -y --no-install-recommends \
+    cuda-10-1 \
+    libcudnn7=7.6.5.32-1+cuda10.1  \
+    libcudnn7-dev=7.6.5.32-1+cuda10.1
+
+# Install tensorrt 6.0.1
+echo "***************Installing Tensorrt***************"
+apt-get install -y --no-install-recommends libnvinfer6=6.0.1-1+cuda10.1 \
+    libnvinfer-dev=6.0.1-1+cuda10.1 \
+    libnvinfer-plugin6=6.0.1-1+cuda10.1
+
+
+echo "--------------------------------------------------------------------------------"
+
+# Setup CUDA paths
+echo "***************Setting CUDA paths***************"
+echo 'export PATH=/usr/local/cuda-10.1/bin:$PATH' >> ~/.bashrc
+echo 'export LD_LIBRARY_PATH=/usr/local/cuda-10.1/lib64:$LD_LIBRARY_PATH' >> ~/.bashrc
+source ~/.bashrc
+echo "***************Running ldconfig***************"
+ldconfig
+
+
+
 
 
 
