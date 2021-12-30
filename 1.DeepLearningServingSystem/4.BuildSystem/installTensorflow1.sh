@@ -19,42 +19,40 @@ apt-key adv --fetch-keys  http://developer.download.nvidia.com/compute/cuda/repo
 echo "***************Adding CUDA repo to sources.list***************"
 echo "deb https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64 /" | tee /etc/apt/sources.list.d/cuda.list
 echo "***************Downloading CUDA repo***************"
-wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-repo-ubuntu1804_10.1.243-1_amd64.deb -O /tmp/cuda-repo-ubuntu1804_10.1.243-1_amd64.deb
+wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-11-2_11.2.2-1_amd64.deb -O /tmp/cuda-11-2_11.2.2-1_amd64.deb
 echo "***************Installing CUDA repo***************"
-echo "Y"|apt install -y /tmp/cuda-repo-ubuntu1804_10.1.243-1_amd64.deb
-echo "***************Updating***************"
-apt update -y
-echo "***************Downloading machine learning repo***************"
-wget http://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64/nvidia-machine-learning-repo-ubuntu1804_1.0.0-1_amd64.deb -O /tmp/nvidia-machine-learning-repo-ubuntu1804_1.0.0-1_amd64.deb
-echo "***************Installing machine learning repo***************"
-apt install -y /tmp/nvidia-machine-learning-repo-ubuntu1804_1.0.0-1_amd64.deb
+dpkg --configure -a
+echo "Y"|apt install -y /tmp/cuda-11-2_11.2.2-1_amd64.deb
+# echo "***************Updating***************"
+# apt update -y
+# echo "***************Downloading machine learning repo***************"
+# wget http://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64/nvidia-machine-learning-repo-ubuntu1804_1.0.0-1_amd64.deb -O /tmp/nvidia-machine-learning-repo-ubuntu1804_1.0.0-1_amd64.deb
+# echo "***************Installing machine learning repo***************"
+# apt install -y /tmp/nvidia-machine-learning-repo-ubuntu1804_1.0.0-1_amd64.deb
 
 echo "***************Installing Nvidia Driver***************"
-sudo apt install -y nvidia-driver-460
+sudo apt install -y nvidia-driver-495
 
 apt-get install -y --no-install-recommends \
-    cuda-10-1 \
-    libcudnn7=7.6.5.32-1+cuda10.1  \
-    libcudnn7-dev=7.6.5.32-1+cuda10.1
-
-# Install tensorrt 6.0.1
-echo "***************Installing Tensorrt***************"
-apt-get install -y --no-install-recommends libnvinfer6=6.0.1-1+cuda10.1 \
-    libnvinfer-dev=6.0.1-1+cuda10.1 \
-    libnvinfer-plugin6=6.0.1-1+cuda10.1
-
+    cuda-11-1 \
+    libcudnn8=8.3.1.22-1+cuda11.5  \
+    libcudnn8-dev=8.3.1.22-1+cuda11.5
 
 echo "--------------------------------------------------------------------------------"
 
 # Setup CUDA paths
 echo "***************Setting CUDA paths***************"
-echo 'export PATH=/usr/local/cuda-10.1/bin:$PATH' >> ~/.bashrc
-echo 'export LD_LIBRARY_PATH=/usr/local/cuda-10.1/lib64:$LD_LIBRARY_PATH' >> ~/.bashrc
-source ~/.bashrc
+echo 'export PATH=/usr/local/cuda-11.2/bin:$PATH' >> /etc/bash.bashrc
+echo 'export LD_LIBRARY_PATH=/usr/local/cuda-11.2/lib64:$LD_LIBRARY_PATH' >> /etc/bash.bashrc
+source /etc/bash.bashrc
+
 echo "***************Running ldconfig***************"
 ldconfig
 
 
+echo "--------------------------------------------------------------------------------"
+echo "# Tensorflow Install------------------------------------------------------------"
+echo "--------------------------------------------------------------------------------"
 
 pip3.7 install --user tensorflow-gpu==2.7.0
 
