@@ -4,7 +4,7 @@
 echo "--------------------------------------------------------------------------------"
 echo "# Cuda Install -----------------------------------------------------------------"
 echo "--------------------------------------------------------------------------------"
-
+dpkg --configure -a
 sudo apt -y purge nvidia-\*
 
 sudo apt -y autoremove
@@ -21,7 +21,7 @@ echo "deb https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x8
 echo "***************Downloading CUDA repo***************"
 wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-11-2_11.2.2-1_amd64.deb -O /tmp/cuda-11-2_11.2.2-1_amd64.deb
 echo "***************Installing CUDA repo***************"
-dpkg --configure -a
+
 echo "Y"|apt install -y /tmp/cuda-11-2_11.2.2-1_amd64.deb
 # echo "***************Updating***************"
 # apt update -y
@@ -58,11 +58,16 @@ pip3.7 install --user tensorflow-gpu==2.7.0
 
 
 echo "--------------------------------------------------------------------------------"
-echo "# Tensorflow Gpu Test------------------------------------------------------------"
+echo "# Tensorflow Gpu Test-----------------------------------------------------------"
 echo "--------------------------------------------------------------------------------"
 nvidia-smi
-echo "--------------------------------------------------------------------------------"
 
+echo "Numa Setting--------------------------------------------------------------------"
+for i in $(lspci | grep -i nvidia|grep VGA|awk '{print $1}'); do
+    f="/sys/bus/pci/devices/0000:$i/numa_node"
+    [[ $(cat $f ) -eq -1 ]] && echo 0 > $f
+done
+echo "Cpu Count -----------------------------------------------------------------------"
 echo "from tensorflow.python.client import device_lib
 device_lib.list_local_devices()"|python3.7
 

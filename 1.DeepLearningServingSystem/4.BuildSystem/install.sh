@@ -64,13 +64,18 @@ echo "--------------------------------------------------------------------------
 echo "## Jupyter ---------------------------------------------------------------------"
 echo "--------------------------------------------------------------------------------"
 pip3.7 install jupyter
-sudo apt-get remove -y python-pexpect python3-pexpect
+pip3.7 install jupyterlab
+
+pip3.7 uninstall -y nbconvert
+pip3.7 install nbconvert==5.6.1
+
+apt-get remove -y python-pexpect python3-pexpect
 pip3.7  install --upgrade pexpect
 echo "yes"|jupyter notebook --generate-config
-sudo pip3 install https://github.com/ipython-contrib/jupyter_contrib_nbextensions/tarball/master
-sudo jupyter contrib nbextension install --user
+pip3 install https://github.com/ipython-contrib/jupyter_contrib_nbextensions/tarball/master
+jupyter contrib nbextension install --user
 pip3.7 install RISE
-sudo jupyter-nbextension install rise --py --sys-prefix
+jupyter-nbextension install rise --py --sys-prefix
 pip3.7 install pandas matplotlib seaborn pillow scipy
 pip3.7 install cython numpy
 pip3.7 install opencv-python
