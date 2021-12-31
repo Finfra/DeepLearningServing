@@ -52,6 +52,9 @@ cd /root/DeepLearningServing/1.DeepLearningServingSystem/4.BuildSystem/
 nvidia-smi
 echo "from tensorflow.python.client import device_lib
 device_lib.list_local_devices()"|python3.7
-=======
+```
+
 * 위 스크립트 파라메터 없이 실행해서 host명 지정 못했을때 아래 스크립트 실행
+```
+hostnamectl set-hostname g1 # g2, s1
 ```
