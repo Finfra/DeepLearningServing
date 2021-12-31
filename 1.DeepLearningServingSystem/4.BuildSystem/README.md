@@ -46,3 +46,8 @@ sudo -i
 cd /root/DeepLearningServing/1.DeepLearningServingSystem/4.BuildSystem/
 . install.sh g1     #. install.sh g2  #. install.sh s1
 ```
+
+* 위 스크립트 파라메터 없이 실행해서 host명 지정 못했을때 아래 스크립트 실행
+```
+hostnamectl set-hostname g1 # g2, s1
+```
