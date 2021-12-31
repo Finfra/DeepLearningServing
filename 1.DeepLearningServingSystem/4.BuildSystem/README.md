@@ -37,7 +37,6 @@ git config --list
 ```
 sudo -i
 git clone https://github.com/Finfra/DeepLearningServing
-##login 필요
 ```
 
 ## 4. Install Software
