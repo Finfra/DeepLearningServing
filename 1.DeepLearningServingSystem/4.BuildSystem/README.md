@@ -41,10 +41,3 @@ sudo -i
 cd /root/DeepLearningServing/1.DeepLearningServingSystem/4.BuildSystem/
 . install.sh g1     #. install.sh g2  #. install.sh s1
 ```
-
-
-
-# Usage
-```
-. install.sh g1
-```
