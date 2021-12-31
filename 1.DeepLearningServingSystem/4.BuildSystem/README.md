@@ -41,7 +41,7 @@ git clone https://github.com/Finfra/DeepLearningServing
 ##login 필요
 ```
 
-##
+## 4. Install Software
 * 첫번째 파라메터가 hostname임.
 ```
 sudo -i
