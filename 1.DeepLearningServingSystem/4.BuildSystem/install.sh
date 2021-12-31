@@ -4,12 +4,14 @@
 echo "--------------------------------------------------------------------------------"
 echo "# Install Base App--------------------------------------------------------------"
 echo "--------------------------------------------------------------------------------"
-sudo apt install -y ssh
+apt install -y ssh
 # Basic Install
-sudo apt update -y
-sudo apt upgrade -y
-sudo apt install -y net-tools ssh git vim tmux curl httpie
-sudo apt install -y software-properties-common
+apt update -y
+apt upgrade -y
+apt install -y net-tools ssh git vim tmux curl httpie
+apt install -y software-properties-common
+add-apt-repository ppa:deadsnakes/ppa
+add-apt-repository -y ppa:deadsnakes/ppa
 # apt -y install vnc4server
 # apt -y install xfce4 xfce4-goodies
 # apt -y install tightvncserver

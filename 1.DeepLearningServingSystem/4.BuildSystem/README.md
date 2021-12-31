@@ -47,3 +47,11 @@ sudo -i
 cd /root/DeepLearningServing/1.DeepLearningServingSystem/4.BuildSystem/
 . install.sh g1     #. install.sh g2  #. install.sh s1
 ```
+
+
+## 5. 설치후 확인
+```
+nvidia-smi
+echo "from tensorflow.python.client import device_lib
+device_lib.list_local_devices()"|python3.7
+```
