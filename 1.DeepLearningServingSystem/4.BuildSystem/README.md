@@ -37,7 +37,6 @@ git config --list
 ```
 sudo -i
 git clone https://github.com/Finfra/DeepLearningServing
-##login 필요
 ```
 
 ## 4. Install Software
@@ -48,10 +47,16 @@ cd /root/DeepLearningServing/1.DeepLearningServingSystem/4.BuildSystem/
 . install.sh g1     #. install.sh g2  #. install.sh s1
 ```
 
+<<<<<<< HEAD
 
 ## 5. 설치후 확인
 ```
 nvidia-smi
 echo "from tensorflow.python.client import device_lib
 device_lib.list_local_devices()"|python3.7
+=======
+* 위 스크립트 파라메터 없이 실행해서 host명 지정 못했을때 아래 스크립트 실행
+```
+hostnamectl set-hostname g1 # g2, s1
+>>>>>>> 8624599d5fbbf2bdc52a901f21cc5256441c6a31
 ```
