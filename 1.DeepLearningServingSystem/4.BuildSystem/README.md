@@ -33,7 +33,6 @@ git config --global color.branch auto
 git config --list
 ```
 
-
 ## 3. git clone (모든 서버)
 ```
 sudo -i
