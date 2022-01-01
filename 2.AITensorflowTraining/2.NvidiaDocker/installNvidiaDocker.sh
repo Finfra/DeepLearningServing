@@ -5,12 +5,12 @@ echo "--------------------------------------------------------------------------
 # curl -s https://get.docker.com/ | sudo sh
 #
 #
-# groupadd docker
-# usermod -aG docker $(whoami)
-# chown -R root:docker /var/run/docker.sock
-# chmod 777 /var/run/docker.sock
-# sudo service docker restart
-# gpasswd -a ubuntu docker
+groupadd docker
+usermod -aG docker $(whoami)
+chown -R root:docker /var/run/docker.sock
+chmod 777 /var/run/docker.sock
+sudo service docker restart
+gpasswd -a ubuntu docker
 #
 #
 
