@@ -67,9 +67,10 @@ for i in $(lspci | grep -i nvidia|grep VGA|awk '{print $1}'); do
     f="/sys/bus/pci/devices/0000:$i/numa_node"
     [[ $(cat $f ) -eq -1 ]] && echo 0 > $f
 done
-echo "Cpu Count -----------------------------------------------------------------------"
-echo "from tensorflow.python.client import device_lib
-device_lib.list_local_devices()"|python3.7
+echo "GPU Count -----------------------------------------------------------------------"
+echo "import tensorflow as tf
+print('Num GPUs Available: ', len(tf.config.experimental.list_physical_devices('GPU')))
+"|python3.7
 
 echo "--------------------------------------------------------------------------------"
 
