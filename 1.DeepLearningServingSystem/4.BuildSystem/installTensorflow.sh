@@ -15,7 +15,7 @@ echo "--------------------------------------------------------------------------
 #   https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#pre-installation-actions
 add-apt-repository ppa:graphics-drivers/ppa -y
 echo "***************Adding CUDA rep Key***************"
-apt-key adv --fetch-keys  http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/7fa2af80.pub -y
+apt-key adv --fetch-keys  http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/7fa2af80.pub
 echo "***************Adding CUDA repo to sources.list***************"
 echo "deb https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64 /" | tee /etc/apt/sources.list.d/cuda.list
 echo "***************Downloading CUDA repo***************"
