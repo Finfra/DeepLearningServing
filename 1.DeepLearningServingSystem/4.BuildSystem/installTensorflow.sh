@@ -9,7 +9,7 @@ sudo apt -y purge nvidia-\*
 
 sudo apt -y autoremove
 sudo apt -y autoclean
-sudo rm -rf /usr/local/cuda*
+# sudo rm -rf /usr/local/cuda*
 
 echo "--------------------------------------------------------------------------------"
 #   https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#pre-installation-actions
@@ -24,7 +24,7 @@ echo "***************Installing CUDA repo***************"
 
 echo "Y"|apt install -y /tmp/cuda-11-2_11.2.2-1_amd64.deb
 # echo "***************Updating***************"
-# apt update -y
+apt update -y
 echo "***************Downloading machine learning repo***************"
 wget http://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64/nvidia-machine-learning-repo-ubuntu1804_1.0.0-1_amd64.deb -O /tmp/nvidia-machine-learning-repo-ubuntu1804_1.0.0-1_amd64.deb
 echo "***************Installing machine learning repo***************"
