@@ -6,6 +6,7 @@ from multiprocessing import util
 
 per_worker_batch_size = 64
 tf_config = json.loads(os.environ['TF_CONFIG'])
+# tf_config = json.loads("{ 'cluster': { 'worker': ['g1:12345', 'g2:23456'] }, 'task': {'type': 'worker', 'index': 0} }")
 num_workers = len(tf_config['cluster']['worker'])
 global_batch_size = per_worker_batch_size * num_workers
 
