@@ -29,12 +29,12 @@ rm /root/.ssh/authorized_keys
 cp /home/ubuntu/.ssh/authorized_keys /root/.ssh/authorized_keys
 git config --global user.name "Steve J. South(NamJungGu) "
 git config --global user.email "nowage@gmail.com"
-git config credential.helper get
-git config credential.helper erase
-git config credential.helper store
-git config credential.helper cache
-git config credential.helper 'cache --timeout=36000'
-git config credential.helper store --global
+git config --global credential.helper get
+git config --global credential.helper erase
+git config --global credential.helper store
+git config --global credential.helper cache
+git config --global credential.helper 'cache --timeout=36000'
+git config --global credential.helper store 
 git config --global core.autocrlf false
 git config --global core.eol lf
 git config --global color.status auto
