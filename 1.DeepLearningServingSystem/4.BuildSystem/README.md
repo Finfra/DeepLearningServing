@@ -6,6 +6,15 @@
 |GPU1           |g1-{num)   |g3s.xlarge   |Ubuntu Server 18.04 LTS (HVM), SSD Volume Type - ami-0ed11f3863410c386|ap-northeast-2c|30G |GPU_SecurityGroup|
 |GPU2           |g2-{num)   |g3s.xlarge   |Ubuntu Server 18.04 LTS (HVM), SSD Volume Type - ami-0ed11f3863410c386|ap-northeast-2c|30G |GPU_SecurityGroup|
 
+### Security Group Setting
+|IP version|Type      |Protocol|Port range|Source   |Description     |
+|----------|----------|--------|----------|---------|----------------|
+|IPv4      |SSH       |TCP     |22        |0.0.0.0/0|SSH             |
+|IPv4      |Custom TCP|TCP     |12345     |0.0.0.0/0|for Multi Worker|
+|IPv4      |Custom TCP|TCP     |9988      |0.0.0.0/0|Jupyter         |
+|IPv4      |Custom TCP|TCP     |6006      |0.0.0.0/0|TensorBoard     |
+|IPv4      |Custom TCP|TCP     |23456     |0.0.0.0/0|for Multi Worker|
+|IPv4      |Custom TCP|TCP     |8888      |0.0.0.0/0|Serving         |
 
 # 셋팅 절차
 ## 1. 유저의 Public Key 추가 (모든 서버)
