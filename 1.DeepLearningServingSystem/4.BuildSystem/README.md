@@ -6,6 +6,15 @@
 |GPU1           |g1-{num)   |g3s.xlarge   |Ubuntu Server 18.04 LTS (HVM), SSD Volume Type - ami-0ed11f3863410c386|ap-northeast-2c|30G |GPU_SecurityGroup|
 |GPU2           |g2-{num)   |g3s.xlarge   |Ubuntu Server 18.04 LTS (HVM), SSD Volume Type - ami-0ed11f3863410c386|ap-northeast-2c|30G |GPU_SecurityGroup|
 
+### Security Group Setting
+|IP version|Type      |Protocol|Port range|Source   |Description     |
+|----------|----------|--------|----------|---------|----------------|
+|IPv4      |SSH       |TCP     |22        |0.0.0.0/0|SSH             |
+|IPv4      |Custom TCP|TCP     |12345     |0.0.0.0/0|for Multi Worker|
+|IPv4      |Custom TCP|TCP     |9988      |0.0.0.0/0|Jupyter         |
+|IPv4      |Custom TCP|TCP     |6006      |0.0.0.0/0|TensorBoard     |
+|IPv4      |Custom TCP|TCP     |23456     |0.0.0.0/0|for Multi Worker|
+|IPv4      |Custom TCP|TCP     |8888      |0.0.0.0/0|Serving         |
 
 # 셋팅 절차
 ## 1. 유저의 Public Key 추가 (모든 서버)
@@ -20,12 +29,12 @@ rm /root/.ssh/authorized_keys
 cp /home/ubuntu/.ssh/authorized_keys /root/.ssh/authorized_keys
 git config --global user.name "Steve J. South(NamJungGu) "
 git config --global user.email "nowage@gmail.com"
-git config credential.helper get
-git config credential.helper erase
-git config credential.helper store
-git config credential.helper cache
-git config credential.helper 'cache --timeout=36000'
-git config credential.helper store --global
+git config --global credential.helper get
+git config --global credential.helper erase
+git config --global credential.helper store
+git config --global credential.helper cache
+git config --global credential.helper 'cache --timeout=36000'
+git config --global credential.helper store 
 git config --global core.autocrlf false
 git config --global core.eol lf
 git config --global color.status auto
