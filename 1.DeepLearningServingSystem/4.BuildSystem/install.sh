@@ -34,6 +34,21 @@ echo "--------------------------------------------------------------------------
 [ ! $(echo $1) ]&& echo "Usage : . install.sh {hostname}"
 [   $(echo $1) ]&& hostnamectl set-hostname $1
 
+
+echo "--------------------------------------------------------------------------------"
+echo "# Docker Setting--------------------------------------------------------------------------------"
+echo "--------------------------------------------------------------------------------"
+curl -s https://get.docker.com/ | sudo sh
+groupadd docker
+usermod -aG docker ubuntu
+chown -R root:docker /var/run/docker.sock
+chmod 777 /var/run/docker.sock
+
+echo "--------------------------------------------------------------------------------"
+echo "# AWS CLI Install--------------------------------------------------------------------------------"
+echo "--------------------------------------------------------------------------------"
+apt install -y awscli
+
 echo "--------------------------------------------------------------------------------"
 echo "# Python Install--------------------------------------------------------------------------------"
 echo "--------------------------------------------------------------------------------"
@@ -45,7 +60,10 @@ apt install -y python3-distutils
 curl https://bootstrap.pypa.io/get-pip.py -o /tmp/get-pip.py
 python3.7 /tmp/get-pip.py
 ### Python
+rm -f /usr/bin/python
+rm -f /usr/bin/python3
 ln -s /usr/bin/python3.7 /usr/bin/python
+ln -s /usr/bin/python3.7 /usr/bin/python3
 # ln -s /usr/bin/pip3.7 /usr/bin/pip
 python3.7 -m pip install --upgrade pip
 
