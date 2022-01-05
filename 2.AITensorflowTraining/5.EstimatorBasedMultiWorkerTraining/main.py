@@ -1,7 +1,7 @@
 import tensorflow as tf
 from multiprocessing import util
 
-import cnn
+import mnist
 
 import os, json
 
@@ -44,7 +44,7 @@ strategy = tf.distribute.experimental.MultiWorkerMirroredStrategy()
 config = tf.estimator.RunConfig(train_distribute=strategy)
 
 classifier = tf.estimator.Estimator(
-    model_fn=cnn.model_fn, model_dir='/tmp/multiworker', config=config)
+    model_fn=mnist.model_fn, model_dir='/tmp/multiworker', config=config)
 tf.estimator.train_and_evaluate(
     classifier,
     train_spec=tf.estimator.TrainSpec(input_fn=cnn.input_fn),
