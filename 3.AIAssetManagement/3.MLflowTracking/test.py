@@ -6,7 +6,7 @@ if __name__ == "__main__":
     print("Running the test script ...")
 
     #Connect to tracking server
-    mlflow.set_tracking_uri("http://127.0.0.1:5000")
+    mlflow.set_tracking_uri("http://g1:5000")
 
     #Create directory for artifacts
     if not os.path.exists("artifact_folder"):

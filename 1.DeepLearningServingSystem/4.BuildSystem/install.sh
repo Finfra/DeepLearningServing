@@ -16,6 +16,10 @@ add-apt-repository -y ppa:deadsnakes/ppa
 # apt -y install vnc4server
 # apt -y install xfce4 xfce4-goodies
 # apt -y install tightvncserver
+x=$(cat /etc/bash.bashrc | grep "alias ll")
+if [ ${#x} -eq 0 ]; then
+     echo "alias ll='ls -als'" >> /etc/bash.bashrc
+fi
 
 
 # # Security
@@ -55,6 +59,9 @@ echo "--------------------------------------------------------------------------
 
 apt install -y python3.7
 apt install -y python3-distutils
+apt install -y python3.7-dev
+cp /usr/lib/python3/dist-packages/apt_pkg.cpython-36m-x86_64-linux-gnu.so /usr/lib/python3/dist-packages/apt_pkg.so
+
 
 
 curl https://bootstrap.pypa.io/get-pip.py -o /tmp/get-pip.py
@@ -98,6 +105,7 @@ jupyter-nbextension install rise --py --sys-prefix
 pip3.7 install pandas matplotlib seaborn pillow scipy
 pip3.7 install cython numpy
 pip3.7 install opencv-python
+pip3.7 install boto3
 #
 # pwd=$(pwd)
 #
