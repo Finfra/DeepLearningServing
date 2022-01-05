@@ -25,6 +25,7 @@ def input_fn(mode, input_context=None):
   return mnist_dataset.map(scale).cache().shuffle(BUFFER_SIZE).batch(BATCH_SIZE)
 
 
+
 def model_fn(features, labels, mode):
   model = tf.keras.Sequential([
       tf.keras.layers.Conv2D(32, 3, activation='relu', input_shape=(28, 28, 1)),

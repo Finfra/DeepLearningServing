@@ -1,3 +1,4 @@
+
 import tensorflow as tf
 from multiprocessing import util
 
@@ -37,6 +38,9 @@ def write_filepath(filepath, task_type, task_id, cluster_spec):
 
 checkpoint_dir = os.path.join(util.get_temp_dir(), 'ckpt')
 
+
+
+
 # os.environ['TF_CONFIG'] = json.loads("{ 'cluster': { 'worker': ['g1:12345', 'g2:23456'] },'task': {'type': 'worker', 'index': 0} }")
 
 strategy = tf.distribute.experimental.MultiWorkerMirroredStrategy()
@@ -47,6 +51,6 @@ classifier = tf.estimator.Estimator(
     model_fn=mnist.model_fn, model_dir='/tmp/multiworker', config=config)
 tf.estimator.train_and_evaluate(
     classifier,
-    train_spec=tf.estimator.TrainSpec(input_fn=cnn.input_fn),
-    eval_spec=tf.estimator.EvalSpec(input_fn=cnn.input_fn)
+    train_spec=tf.estimator.TrainSpec(input_fn=mnist.input_fn),
+    eval_spec=tf.estimator.EvalSpec(input_fn=mnist.input_fn)
 )
