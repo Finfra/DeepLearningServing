@@ -15,6 +15,7 @@
 |IPv4      |Custom TCP|TCP     |6006      |0.0.0.0/0|TensorBoard     |
 |IPv4      |Custom TCP|TCP     |23456     |0.0.0.0/0|for Multi Worker|
 |IPv4      |Custom TCP|TCP     |8888      |0.0.0.0/0|Serving         |
+|IPv4      |Custom TCP|TCP     |5000      |0.0.0.0/0|Serving         |
 
 # 셋팅 절차
 ## 1. 유저의 Public Key 추가 (모든 서버)
