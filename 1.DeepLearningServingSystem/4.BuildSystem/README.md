@@ -55,7 +55,7 @@ git clone https://github.com/Finfra/DeepLearningServing
 ```
 sudo -i
 cd /root/DeepLearningServing/1.DeepLearningServingSystem/4.BuildSystem/
-. install.sh g1     #. install.sh g2  #. install.sh s1
+. install.sh g1     #. install.sh g2  #. install.sh c1
 ```
 
 ## 5. 설치후 확인
