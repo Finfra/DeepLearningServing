@@ -15,11 +15,13 @@
 |IPv4      |Custom TCP|TCP     |6006      |0.0.0.0/0|TensorBoard     |
 |IPv4      |Custom TCP|TCP     |23456     |0.0.0.0/0|for Multi Worker|
 |IPv4      |Custom TCP|TCP     |8888      |0.0.0.0/0|Serving         |
+|IPv4      |Custom TCP|TCP     |5000      |0.0.0.0/0|Serving         |
 
 # 셋팅 절차
 ## 1. 유저의 Public Key 추가 (모든 서버)
 ```
-echo "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEApTyEAbAstO1lrnRMls7roNpi4s7WbKZqIhz9uIubs/sJGqwruRLsJC4VoVfgLVTXO5WWJ6xIQ0MXpz+Xdx2VliPyFDVMMg0H9MyNjFpN+xgd7HwKM5AxOLc2Z6iJGV4NmFIGdvldI8B7xPae1L3jQn7cdoBkF3MNWV31BcITLUgd5hwXTgQ4pHx+xEIq6pmoSkZMCAcTUr1eECWzyPGy3b35bjXONxysRmvu9eo69HhtqhSBBrAhmsO6ITOqoBorbFw7o5ZP5W5/YGM3zYiYgepl+Bd3GYKdJ7hAbiUPf7dRx3L3+64GDovrzBvLSZZAYdhRzWErcUZwcZS+7pmEwQ== imksk">> ~/.ssh/authorized_keys
+echo "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEApTyEAbAstO1lrnRMls7roNpi4s7WbKZqIhz9uIubs/sJGqwruRLsJC4VoVfgLVTXO5WWJ6xIQ0MXpz+Xdx2VliPyFDVMMg0H9MyNjFpN+xgd7HwKM5AxOLc2Z6iJGV4NmFIGdvldI8B7xPae1L3jQn7cdoBkF3MNWV31BcITLUgd5hwXTgQ4pHx+xEIq6pmoSkZMCAcTUr1eECWzyPGy3b35bjXONxysRmvu9eo69HhtqhSBBrAhmsO6ITOqoBorbFw7o5ZP5W5/YGM3zYiYgepl+Bd3GYKdJ7hAbiUPf7dRx3L3+64GDovrzBvLSZZAYdhRzWErcUZwcZS+7pmEwQ== imksk
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDgq+pHCxO9IbndGBIyRkAOSSlw4h4/z8diWGWc4ZcVrwY8M1z1bTH+kEj5qjJ6AEwc/iU6hZ9jDr0YQrcs4FM5UJnY7Jcs1GYIimr7ZltXVgAYbLqHu0CHnZgVjvqy3RZxgSrQ89BgNujyd6ws53uF4cUILb3zqooSgLO5NlHOSBqV2dyKpvCc+FVmlZyjTFkW/gBpc6QDs+w9votH8MtpM+FNug4rlxVo7bfcp7tQa9AzcbxMHojVEDwTdi22wgPQ/q48o6r0LFOxvZHngsdL63YIWqKyr2uaHkM2z20uYnnYBRzTct+ldZqjk5pPArP+as2bai07rzxm/WtiWt19 nowage">> ~/.ssh/authorized_keys
 ```
 
 ## 2. Root Loging가능하게 하기 및 Git 유저 셋팅 (모든 서버)
@@ -53,7 +55,7 @@ git clone https://github.com/Finfra/DeepLearningServing
 ```
 sudo -i
 cd /root/DeepLearningServing/1.DeepLearningServingSystem/4.BuildSystem/
-. install.sh g1     #. install.sh g2  #. install.sh s1
+. install.sh g1     #. install.sh g2  #. install.sh c1
 ```
 
 ## 5. 설치후 확인

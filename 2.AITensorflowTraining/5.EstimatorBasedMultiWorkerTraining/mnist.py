@@ -1,11 +1,31 @@
 import os
 import tensorflow as tf
 import numpy as np
-
+import tensorflow_datasets as tfds
 
 LEARNING_RATE = 1e-4
 BUFFER_SIZE = 10000
 BATCH_SIZE = 64
+
+def input_fn(mode, input_context=None):
+  datasets, info = tfds.load(name='mnist',
+                                with_info=True,
+                                as_supervised=True)
+  mnist_dataset = (datasets['train'] if mode == tf.estimator.ModeKeys.TRAIN else
+                   datasets['test'])
+
+  def scale(image, label):
+    image = tf.cast(image, tf.float32)
+    image /= 255
+    return image, label
+
+  if input_context:
+    mnist_dataset = mnist_dataset.shard(input_context.num_input_pipelines,
+                                        input_context.input_pipeline_id)
+  return mnist_dataset.map(scale).cache().shuffle(BUFFER_SIZE).batch(BATCH_SIZE)
+
+
+
 def model_fn(features, labels, mode):
   model = tf.keras.Sequential([
       tf.keras.layers.Conv2D(32, 3, activation='relu', input_shape=(28, 28, 1)),
