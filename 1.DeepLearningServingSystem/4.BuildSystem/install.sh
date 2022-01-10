@@ -9,7 +9,7 @@ echo "--------------------------------------------------------------------------
 apt update -y
 apt upgrade -y
 apt install -y net-tools ssh git vim tmux curl httpie
-sudo apt-get install language-pack-ko language-pack-ko-base
+apt install -y language-pack-ko language-pack-ko-base
 apt install -y software-properties-common
 add-apt-repository -y ppa:deadsnakes/ppa
 # apt -y install vnc4server
