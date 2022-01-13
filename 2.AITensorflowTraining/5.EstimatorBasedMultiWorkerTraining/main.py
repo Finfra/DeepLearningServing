@@ -1,6 +1,9 @@
 
 import tensorflow as tf
 from multiprocessing import util
+import os
+import sys
+from pathlib import Path
 
 import mnist
 
@@ -45,10 +48,31 @@ checkpoint_dir = os.path.join(util.get_temp_dir(), 'ckpt')
 
 strategy = tf.distribute.experimental.MultiWorkerMirroredStrategy()
 
-config = tf.estimator.RunConfig(train_distribute=strategy)
+config = tf.estimator.RunConfig(
+        train_distribute=strategy,
+        save_checkpoints_steps=100,
+        save_summary_steps=100
+        )
+# folder path 설정
+tmp_path = '/tmp/multiworker'
+def checkdir(num):
+  global tmp_path
+  if (os.path.isdir(tmp_path + str(num))):
+     num = num +1
+     checkdir(num)
+  else:
+    tmp_path = tmp_path + str(num)
+
+checkdir(0)
+
+
 
 classifier = tf.estimator.Estimator(
-    model_fn=mnist.model_fn, model_dir='/tmp/multiworker', config=config)
+    model_fn=mnist.model_fn,
+    model_dir=tmp_path,
+    config=config
+)
+
 tf.estimator.train_and_evaluate(
     classifier,
     train_spec=tf.estimator.TrainSpec(input_fn=mnist.input_fn),
