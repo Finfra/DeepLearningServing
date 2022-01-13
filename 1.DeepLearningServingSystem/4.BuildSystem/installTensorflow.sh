@@ -54,8 +54,9 @@ echo "--------------------------------------------------------------------------
 echo "# Tensorflow Install------------------------------------------------------------"
 echo "--------------------------------------------------------------------------------"
 
-pip3.7 install --user tensorflow-gpu==2.7.0
-pip3.7 install --user tensorflow_datasets
+pip3.7 install tensorflow-gpu==2.7.0
+pip3.7 install tensorflow_datasets
+pip3.7 install sklearn
 
 echo "--------------------------------------------------------------------------------"
 echo "# Tensorflow Gpu Test-----------------------------------------------------------"

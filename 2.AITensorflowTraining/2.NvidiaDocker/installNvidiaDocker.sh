@@ -6,10 +6,10 @@ echo "--------------------------------------------------------------------------
 #
 #
 groupadd docker
-usermod -aG docker $(whoami)
+usermod -aG docker ubuntu
 chown -R root:docker /var/run/docker.sock
 chmod 777 /var/run/docker.sock
-sudo service docker restart
+service docker restart
 gpasswd -a ubuntu docker
 #
 #
