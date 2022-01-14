@@ -47,17 +47,6 @@ usermod -aG docker ubuntu
 chown -R root:docker /var/run/docker.sock
 chmod 777 /var/run/docker.sock
 
-echo "--------------------------------------------------------------------------------"
-echo "# AWS CLI Install--------------------------------------------------------------------------------"
-echo "--------------------------------------------------------------------------------"
-curl https://bootstrap.pypa.io/get-pip.py -o /tmp/get-pip.py
-python3 /tmp/get-pip.py
-# python3 -m pip uninstall -y botocore
-# python3 -m pip uninstall -y boto3
-python3 -m pip install awscli==1.22.28
-
-#apt remove -y awscli
-apt install -y awscli
 
 echo "--------------------------------------------------------------------------------"
 echo "# Python Install--------------------------------------------------------------------------------"
@@ -92,6 +81,18 @@ export WORKON_HOME=~/.virtualenvs
 . /usr/local/bin/virtualenvwrapper.sh
 EOF
 fi
+
+echo "--------------------------------------------------------------------------------"
+echo "# AWS CLI Install--------------------------------------------------------------------------------"
+echo "--------------------------------------------------------------------------------"
+python3 /tmp/get-pip.py
+# python3 -m pip uninstall -y botocore
+# python3 -m pip uninstall -y boto3
+python3 -m pip install awscli==1.22.28
+
+#apt remove -y awscli
+apt install -y awscli
+
 echo "--------------------------------------------------------------------------------"
 echo "## Jupyter ---------------------------------------------------------------------"
 echo "--------------------------------------------------------------------------------"
