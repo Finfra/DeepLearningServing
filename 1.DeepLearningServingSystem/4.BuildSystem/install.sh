@@ -50,6 +50,13 @@ chmod 777 /var/run/docker.sock
 echo "--------------------------------------------------------------------------------"
 echo "# AWS CLI Install--------------------------------------------------------------------------------"
 echo "--------------------------------------------------------------------------------"
+curl https://bootstrap.pypa.io/get-pip.py -o /tmp/get-pip.py
+python3 /tmp/get-pip.py
+# python3 -m pip uninstall -y botocore
+# python3 -m pip uninstall -y boto3
+python3 -m pip install awscli==1.22.28
+
+#apt remove -y awscli
 apt install -y awscli
 
 echo "--------------------------------------------------------------------------------"
@@ -67,9 +74,9 @@ curl https://bootstrap.pypa.io/get-pip.py -o /tmp/get-pip.py
 python3.7 /tmp/get-pip.py
 ### Python
 rm -f /usr/bin/python
-rm -f /usr/bin/python3
+# rm -f /usr/bin/python3
 ln -s /usr/bin/python3.7 /usr/bin/python
-ln -s /usr/bin/python3.7 /usr/bin/python3
+# ln -s /usr/bin/python3.7 /usr/bin/python3
 # ln -s /usr/bin/pip3.7 /usr/bin/pip
 python3.7 -m pip install --upgrade pip
 
