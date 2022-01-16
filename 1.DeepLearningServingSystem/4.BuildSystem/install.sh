@@ -8,7 +8,7 @@ echo "--------------------------------------------------------------------------
 # Basic Install
 apt update -y
 apt upgrade -y
-apt install -y net-tools ssh git vim tmux curl httpie
+apt install -y net-tools ssh git vim tmux curl httpie tree
 apt install -y language-pack-ko language-pack-ko-base
 apt install -y software-properties-common
 add-apt-repository -y ppa:deadsnakes/ppa
