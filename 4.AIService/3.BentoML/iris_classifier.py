@@ -10,7 +10,6 @@ class IrisClassifier(BentoService):
     """
     A minimum prediction service exposing a Scikit-learn model
     """
-
     @api(input=DataframeInput(), batch=True)
     def predict(self, df: pd.DataFrame):
         """
